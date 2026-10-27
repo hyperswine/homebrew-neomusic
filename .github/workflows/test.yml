@@ -1,0 +1,31 @@
+name: brew test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  macos:
+    runs-on: macos-15   # arm64
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tap this checkout
+        run: |
+          brew update
+          mkdir -p "$(brew --repository)/Library/Taps/hyperswine"
+          ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/hyperswine/homebrew-neomusic"
+      - name: brew style
+        run: brew style hyperswine/neomusic
+      - name: brew audit
+        run: brew audit --strict --online hyperswine/neomusic/neo-music
+      - name: brew install (from source)
+        run: brew install --build-from-source --verbose hyperswine/neomusic/neo-music
+      - name: brew test
+        run: brew test --verbose hyperswine/neomusic/neo-music
+      - name: Render a bundled example
+        run: |
+          neo-music render "$(brew --prefix)/share/neo-music/examples/neomusic/twinkle.neomusic" -o twinkle.mp3
+          ffprobe -v error -show_entries stream=codec_name,sample_rate -of csv=p=0 twinkle.mp3
