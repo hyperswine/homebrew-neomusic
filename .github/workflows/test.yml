@@ -17,6 +17,7 @@ jobs:
           brew update
           mkdir -p "$(brew --repository)/Library/Taps/hyperswine"
           ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/hyperswine/homebrew-neomusic"
+          brew trust hyperswine/neomusic
       - name: brew style
         run: brew style hyperswine/neomusic
       - name: brew audit

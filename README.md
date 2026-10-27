@@ -7,8 +7,9 @@ or LilyPond sheets.
 ## Install
 
 ```sh
-brew install hyperswine/neomusic/neo-music
-# or: brew tap hyperswine/neomusic && brew install neo-music
+brew tap hyperswine/neomusic
+brew trust hyperswine/neomusic   # recent Homebrew refuses formulae from untrusted taps
+brew install neo-music
 ```
 
 It builds from source (there are no bottles). That pulls in `ghc@9.8` and
