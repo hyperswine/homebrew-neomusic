@@ -1,8 +1,8 @@
 class NeoMusic < Formula
   desc "Algebraic music notation: render .neomusic scores to audio, MIDI and sheets"
   homepage "https://github.com/hyperswine/neomusic"
-  url "https://github.com/hyperswine/neomusic/archive/refs/tags/v0.1.0.0.tar.gz"
-  sha256 "1a754995da180746d0eed6c31aa2935126bb3b90d7f5ada1450bc411dd451e5e"
+  url "https://github.com/hyperswine/neomusic/archive/refs/tags/v0.2.0.0.tar.gz"
+  sha256 "ac0fa972c38353582c62992bfc36c3c32a467c4db3dad4db93c893c08cb15515"
   license "GPL-3.0-only"
   head "https://github.com/hyperswine/neomusic.git", branch: "main"
 
